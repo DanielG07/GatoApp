@@ -8,7 +8,7 @@
     android:background="#D7CCC8">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/setupTitleTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -20,38 +20,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/label1TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label1"
         android:textColor="#FF3300"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName" />
+        app:layout_constraintBottom_toTopOf="@+id/personName1ET"
+        app:layout_constraintStart_toStartOf="@+id/personName1ET" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/label2TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label2"
         android:textColor="#0073FF"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintBottom_toTopOf="@+id/personName2ET"
+        app:layout_constraintStart_toStartOf="@+id/personName2ET" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submitButtom"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:background="@drawable/red_buttom"
-        android:text="@string/submitButtom"
+        android:text="@string/submitButton"
         android:textSize="20sp"
+        android:onClick="submitButtonClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/personName2ET" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/personName1ET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
@@ -61,10 +62,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/setupTitleTV" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/personName2ET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -74,5 +75,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/personName1ET" />
 </androidx.constraintlayout.widget.ConstraintLayout>

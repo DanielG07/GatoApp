@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun playButtonClick(view: View){
-        var intent = Intent(this, PlayerSetup::class.java);
+        val intent = Intent(this, PlayerSetup::class.java);
         startActivity(intent);
     }
 }

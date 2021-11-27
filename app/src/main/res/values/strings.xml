@@ -3,10 +3,13 @@
 
     <string name="homeTitle">Gato</string>
     <string name="playButton">Play</string>
-    
+
     <string name="playerSetupTitle">Enter Your Name</string>
     <string name="label1">Player 1</string>
     <string name="label2">Player 2</string>
-    <string name="submitButtom">Submit Names</string>
+    <string name="submitButton">Submit Names</string>
     <string name="nameHint">Enter Your Name</string>
+    
+    <string name="playAgainButton">Play Again</string>
+    <string name="homeButton">Home</string>
 </resources>
