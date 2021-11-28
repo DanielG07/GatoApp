@@ -19,7 +19,7 @@ class PlayerSetup : AppCompatActivity() {
         val player2 : EditText = findViewById(R.id.personName2ET)
 
         val player1Name = player1.text.toString()
-        val player2Name = player1.text.toString()
+        val player2Name = player2.text.toString()
 
         val intent = Intent(this, GameDisplay::class.java)
         intent.putExtra("PLAYER_NAMES", arrayOf(player1Name, player2Name))
