@@ -8,17 +8,21 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 
 
 class TicTacTocBoard(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
-    private var boardColor: Int = 0
-    private var XColor: Int = 0
-    private var OColor: Int = 0
-    private var winningLineColor: Int = 0
+    private var boardColor: Int
+    private var XColor: Int
+    private var OColor: Int
+    private var winningLineColor: Int
 
     private val paint = Paint()
     private var cellSize = width/3
+
+    private var winningLine = false
 
     private val game = GameLogic()
 
@@ -63,16 +67,24 @@ class TicTacTocBoard(context: Context?, attrs: AttributeSet?) : View(context, at
         if(action == MotionEvent.ACTION_DOWN){
             var row = Math.ceil((y/cellSize).toDouble()).toInt()
             var col = Math.ceil((x/cellSize).toDouble()).toInt()
-            if(game.updateGameBoard(row, col)){
-                invalidate()
 
-                if(game.player % 2 == 0){
-                    game.player = game.player - 1
-                }
-                else{
-                    game.player = game.player + 1
+            if (!winningLine){
+                if(game.updateGameBoard(row, col)){
+                    invalidate()
+
+                    if (game.winnerCheck()){
+                        winningLine = true
+                    }
+
+                    if(game.player % 2 == 0){
+                        game.player = game.player - 1
+                    }
+                    else{
+                        game.player = game.player + 1
+                    }
                 }
             }
+
 
             invalidate()
 
@@ -133,6 +145,21 @@ class TicTacTocBoard(context: Context?, attrs: AttributeSet?) : View(context, at
             (row*cellSize + cellSize*0.2).toFloat(),
             (col*cellSize + cellSize*0.8).toFloat(),
             (row*cellSize + cellSize*0.8).toFloat(), paint)
+    }
+
+    fun setupGame(playAgain: Button, home: Button, playerDisplay: TextView, name: Array<String>){
+        game.playAgainBTN = playAgain
+        game.homeBTN = home
+        game.playerTurn = playerDisplay
+        if(name[0] != "" && name[1] != ""){
+            game.playerNames = name
+        }
+
+    }
+
+    fun resetGame(){
+        game.resetGame()
+        winningLine = false
     }
 
 
