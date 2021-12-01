@@ -14,6 +14,8 @@ class GameLogic {
 
     var player = 1
 
+    var winType: Array<Int> = arrayOf<Int>(-1, -1, -1)
+
     init {
         val one: IntArray = intArrayOf(0,0,0)
         val two: IntArray = intArrayOf(0,0,0)
@@ -46,21 +48,25 @@ class GameLogic {
         for (r in 0..2){
             if(gameBoard!![r][0] == gameBoard!![r][1] && gameBoard!![r][0] == gameBoard!![r][2] && gameBoard!![r][0] != 0){
                 isWinner = true
+                winType = arrayOf<Int>(r, 0, 1)
             }
         }
 
         for (c in 0..2){
             if(gameBoard!![0][c] == gameBoard!![1][c] && gameBoard!![0][c] == gameBoard!![2][c] && gameBoard!![0][c] != 0){
                 isWinner = true
+                winType = arrayOf<Int>(0, c, 2)
             }
         }
 
         if(gameBoard!![0][0] == gameBoard!![1][1] && gameBoard!![0][0] == gameBoard!![2][2] && gameBoard!![0][0] != 0){
             isWinner = true
+            winType = arrayOf<Int>(0, 0, 3)
         }
 
         if(gameBoard!![0][2] == gameBoard!![1][1] && gameBoard!![0][2] == gameBoard!![2][0] && gameBoard!![0][2] != 0){
             isWinner = true
+            winType = arrayOf<Int>(0, 2, 4)
         }
 
         for (r in 0..2){
@@ -81,6 +87,7 @@ class GameLogic {
             homeBTN!!.visibility = View.VISIBLE
             playerTurn!!.text = "Tie game"
             isWinner = true
+            winType = arrayOf<Int>(-1, -1, -1)
         }
 
         return isWinner

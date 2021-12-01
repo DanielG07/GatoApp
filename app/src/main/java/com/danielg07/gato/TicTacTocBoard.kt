@@ -56,6 +56,10 @@ class TicTacTocBoard(context: Context?, attrs: AttributeSet?) : View(context, at
 
         drawGameBoard(canvas)
         drawMarkers(canvas)
+
+        if(winningLine){
+            drawWinningLine(canvas)
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -145,6 +149,55 @@ class TicTacTocBoard(context: Context?, attrs: AttributeSet?) : View(context, at
             (row*cellSize + cellSize*0.2).toFloat(),
             (col*cellSize + cellSize*0.8).toFloat(),
             (row*cellSize + cellSize*0.8).toFloat(), paint)
+    }
+
+    private fun drawHorizontalLine(canvas: Canvas?, row: Int, col: Int){
+
+        canvas!!.drawLine(col.toFloat(),
+            (row*cellSize + cellSize/2).toFloat(),
+            (cellSize*3).toFloat(),
+            (row*cellSize + cellSize/2).toFloat(), paint)
+    }
+
+    private fun drawVerticalLine (canvas: Canvas?, row: Int, col: Int){
+
+        canvas!!.drawLine((col*cellSize + cellSize/2).toFloat(),
+            (row).toFloat(),
+            (col*cellSize + cellSize/2).toFloat(),
+            (cellSize*3).toFloat(), paint)
+    }
+
+    private fun drawDiagonalLinePos (canvas: Canvas?){
+
+        canvas!!.drawLine((0).toFloat(),
+            (cellSize*3).toFloat(),
+            (cellSize*3).toFloat(),
+            (0).toFloat(), paint)
+    }
+
+    private fun drawDiagonalLineNeg (canvas: Canvas?){
+
+        canvas!!.drawLine((0).toFloat(),
+            (0).toFloat(),
+            (cellSize*3).toFloat(),
+            (cellSize*3).toFloat(), paint)
+    }
+
+    fun drawWinningLine (canvas: Canvas?){
+        paint.color = winningLineColor
+
+        val row = game.winType[0]
+        val col = game.winType[1]
+        val type = game.winType[2]
+
+        when(type){
+            1 -> drawHorizontalLine(canvas, row, col)
+            2 -> drawVerticalLine(canvas, row, col)
+            3 -> drawDiagonalLineNeg(canvas)
+            4 -> drawDiagonalLinePos(canvas)
+
+        }
+
     }
 
     fun setupGame(playAgain: Button, home: Button, playerDisplay: TextView, name: Array<String>){
